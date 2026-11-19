@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Focus Timer Live — A clean Pomodoro focus timer with 25/5 minute presets, gentle chime, and saved session counter.">
+<title>Focus Timer Live</title>
+<link rel="stylesheet" href="./styles.css">
+<script defer src="./app.js"></script>
+</head>
+<body data-mode="focus">
+<main class="app-shell" aria-label="Focus Timer Live">
+<header class="app-header">
+<div class="brand">
+<span class="brand-dot" aria-hidden="true"></span>
+<h1>Focus Timer Live</h1>
+</div>
+<p class="subtitle">Stay present, one session at a time.</p>
+</header>
+
+<section class="timer-card" aria-label="Pomodoro Timer">
+<div class="preset-tabs" role="tablist" aria-label="Timer presets">
+<button
+type="button"
+class="preset-btn active"
+id="preset-focus"
+role="tab"
+aria-selected="true"
+data-preset="focus"
+>
+Focus <span class="preset-mins">25m</span>
+</button>
+<button
+type="button"
+class="preset-btn"
+id="preset-break"
+role="tab"
+aria-selected="false"
+data-preset="break"
+>
+Short Break <span class="preset-mins">5m</span>
+</button>
+</div>
+
+<div class="ring-wrapper">
+<svg class="progress-ring" viewBox="0 0 240 240" aria-hidden="true">
+<circle class="ring-track" cx="120" cy="120" r="106"></circle>
+<circle class="ring-fill" id="ring-fill" cx="120" cy="120" r="106"></circle>
+</svg>
+<div class="timer-readout">
+<span class="mode-badge" id="mode-label">Focus Session</span>
+<div class="time-display" id="time-display" role="timer" aria-live="off">25:00</div>
+<span class="status-text" id="status-text">Ready to begin</span>
+</div>
+</div>
+
+<div class="controls">
+<button type="button" class="btn btn-primary" id="start-pause-btn" aria-label="Start timer">
+Start
+</button>
+<button type="button" class="btn btn-secondary" id="reset-btn" aria-label="Reset timer">
+Reset
+</button>
+</div>
+
+<div class="toolbar">
+<label class="chime-toggle" for="chime-checkbox">
+<input type="checkbox" id="chime-checkbox" checked>
+<span class="toggle-switch" aria-hidden="true"></span>
+<span class="toggle-label">Gentle chime</span>
+</label>
+<button type="button" class="link-btn" id="test-chime-btn" aria-label="Preview completion chime">
+Test sound
+</button>
+</div>
+</section>
+
+<section class="sessions-card" aria-label="Completed focus sessions">
+<div class="sessions-info">
+<span class="sessions-label">Completed Sessions</span>
+<div class="sessions-count-row">
+<strong class="sessions-count" id="sessions-count">0</strong>
+<div class="session-dots" id="session-dots" aria-hidden="true"></div>
+</div>
+</div>
+<button type="button" class="link-btn subtle" id="clear-sessions-btn" aria-label="Reset completed sessions counter">
+Clear
+</button>
+</section>
+
+<footer class="app-footer">
+<p>Shortcuts: <kbd>Space</kbd> to start/pause · <kbd>R</kbd> to reset</p>
+</footer>
+</main>
+</body>
+</html>
